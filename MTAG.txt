@@ -1,0 +1,9 @@
+git clone https://github.com/omeed-maghzian/mtag.git
+
+#GWAS数据格式snpid    chr    bpos    a1    a2    freq    z    pval    n
+
+python /[path]/mtag.py  \
+	--sumstats PD.txt,RBD.txt，LBD.txt \
+	--out ./tutorial_results_1.1NS \
+	--n_min 0.0 \
+      --stream_stdout &
