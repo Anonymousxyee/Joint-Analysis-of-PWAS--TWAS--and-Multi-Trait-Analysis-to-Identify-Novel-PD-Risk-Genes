@@ -1,0 +1,13 @@
+cd MetaXcan-master/software/
+conda activate MetaXcan
+DATA=/home/sjj/MetaXcan-master/software/summary-gwas-imputation-master/src/data
+METAXCAN=/home/sjj/MetaXcan-master/software
+OUTPUT=/home/sjj/TEST
+python $METAXCAN/SPrediXcan.py \
+--gwas_file  $OUTPUT/processed_summary_imputation/imputed_PD38.txt.gz \
+--snp_column panel_variant_id --effect_allele_column effect_allele --non_effect_allele_column non_effect_allele --zscore_column zscore \
+--model_db_path $DATA/models/eqtl/mashr/mashr_Whole_Blood.db \
+--covariance $DATA/models/eqtl/mashr/mashr_Whole_Blood.txt.gz \
+--keep_non_rsid --additional_output --model_db_snp_key varID \
+--throw \
+--output_file $OUTPUT/spredixcan/eqtl/PDMTAG__PM__Whole_Blood.csv
