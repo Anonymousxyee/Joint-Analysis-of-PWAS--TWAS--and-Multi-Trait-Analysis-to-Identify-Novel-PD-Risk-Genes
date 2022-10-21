@@ -1,0 +1,40 @@
+install.packages(c('optparse','RColorBrewer'))
+devtools::install_github("carbocation/plink2R/plink2R", ref="carbocation-permit-r361")
+install.packages('plink2R-master/plink2R/',repos=NULL)
+library(plink2R)
+#Download and unpack the FUSION software package from github:
+
+wget https://github.com/gusevlab/fusion_twas/archive/master.zip
+unzip master.zip
+cd fusion_twas-master
+
+#Download and unpack the (1000 Genomes) LD reference data:
+
+wget https://data.broadinstitute.org/alkesgroup/FUSION/LDREF.tar.bz2
+tar xjvf LDREF.tar.bz2
+
+
+ #Download and unpack the plink2R library (by Gad Abraham):
+
+wget https://github.com/gabraham/plink2R/archive/master.zip
+unzip master.zip
+
+#TWAS
+cd fusion_twas_master
+Rscript FUSION.assoc_test.R \
+--sumstats PDldsc.sumstats \
+--weights ./WEIGHTS/train_weights.pos \
+--weights_dir ./WEIGHTS/ \
+--ref_ld_chr ./LDREF/1000G.EUR. \
+--chr 2 \
+--out mtag.2.dat
+
+#血浆 PWAS
+Rscript ./scripts/PWAS.assoc_test.R \
+--sumstats ./lacunar.sumstats \
+--weights ./PWAS_EA/Plasma_Protein_EA_hg19.pos \
+--weights_dir ./PWAS_EA/Plasma_Protein_weights_EA/ \
+--ref_ld_chr ./LDref/EUR/chr \
+--force_model enet \
+--chr 1 \
+--out lacunar1
