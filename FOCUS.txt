@@ -1,0 +1,2 @@
+
+focus finemap PD.cleaned.sumstats.gz 1000G.EUR.QC.1 JTI.db --chr 1 --tissue TISSUE_TYPE --out chr1
