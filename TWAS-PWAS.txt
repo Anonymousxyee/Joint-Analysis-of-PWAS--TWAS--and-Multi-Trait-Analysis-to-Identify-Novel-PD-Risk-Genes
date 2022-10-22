@@ -27,14 +27,14 @@ Rscript FUSION.assoc_test.R \
 --weights_dir ./WEIGHTS/ \
 --ref_ld_chr ./LDREF/1000G.EUR. \
 --chr 2 \
---out mtag.2.dat
+--out PD.2.dat
 
 #血浆 PWAS
 Rscript ./scripts/PWAS.assoc_test.R \
---sumstats ./lacunar.sumstats \
+--sumstats ./PD.sumstats \
 --weights ./PWAS_EA/Plasma_Protein_EA_hg19.pos \
 --weights_dir ./PWAS_EA/Plasma_Protein_weights_EA/ \
 --ref_ld_chr ./LDref/EUR/chr \
 --force_model enet \
 --chr 1 \
---out lacunar1
+--out PD1
